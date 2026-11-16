@@ -4,8 +4,8 @@ Loads a service's secrets from OpenBao (AppRole, KV v2) into the environment at 
 
 ```dockerfile
 COPY --from=openbao/openbao:2.7.2 /usr/bin/bao /usr/local/bin/bao
-ADD --chmod=755 https://raw.githubusercontent.com/dsrptlab/bao-env/v2/bao-env /opt/bao/bao-env
-ADD https://raw.githubusercontent.com/dsrptlab/bao-env/v2/agent.hcl /opt/bao/agent.hcl
+ADD --chmod=755 https://raw.githubusercontent.com/dsrptlab/bao-env/v3/bao-env /opt/bao/bao-env
+ADD --chmod=644 https://raw.githubusercontent.com/dsrptlab/bao-env/v3/agent.hcl /opt/bao/agent.hcl
 ENTRYPOINT ["/opt/bao/bao-env", "<original command>"]
 ```
 
