@@ -10,6 +10,8 @@ mkdir -p /tmp/bao
 printf '%s' "$BAO_ROLE_ID" > /tmp/bao/role_id
 printf '%s' "$BAO_SECRET_ID" > /tmp/bao/secret_id
 unset BAO_ROLE_ID BAO_SECRET_ID
+# The agent must use agent.hcl's address and AppRole only, never an inherited old Vault address/token.
+unset VAULT_ADDR VAULT_TOKEN BAO_ADDR BAO_TOKEN
 bao agent -config=/opt/bao/agent.hcl -log-level=warn >&2
 . /tmp/bao/env
 rm -f /tmp/bao/env /tmp/bao/role_id /tmp/bao/secret_id
