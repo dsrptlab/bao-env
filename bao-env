@@ -1,10 +1,10 @@
 #!/bin/sh
 # Loads the service secrets from OpenBao into the environment, then runs the given command.
-# Requires BAO_ROLE_ID, BAO_SECRET_ID and BAO_SECRET_PATH (KV v2 path under "secret/").
+# Requires BAO_ROLE_ID, BAO_SECRET_ID and BAO_SECRET_PATHS (comma-separated KV v2 paths under "secret/").
 set -eu
 : "${BAO_ROLE_ID:?BAO_ROLE_ID is required}"
 : "${BAO_SECRET_ID:?BAO_SECRET_ID is required}"
-: "${BAO_SECRET_PATH:?BAO_SECRET_PATH is required}"
+: "${BAO_SECRET_PATHS:?BAO_SECRET_PATHS is required}"
 umask 077
 mkdir -p /tmp/bao
 printf '%s' "$BAO_ROLE_ID" > /tmp/bao/role_id
